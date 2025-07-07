@@ -1,0 +1,92 @@
+{
+  "name": "react-week-picker-pro",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A modern, functional React component for selecting weeks with comprehensive features including week numbers, date ranges, and flexible configuration options.",
+  "main": "./dist/react-week-picker-pro.cjs",
+  "module": "./dist/react-week-picker-pro.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/react-week-picker-pro.js",
+      "require": "./dist/react-week-picker-pro.cjs"
+    },
+    "./dist/style.css": "./dist/style.css"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:demo": "vite build --mode demo",
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint . --ext js,jsx --fix",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
+    "type-check": "tsc --noEmit",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run test:run && npm run build",
+    "size": "size-limit",
+    "analyze": "npm run build && npx vite-bundle-analyzer dist"
+  },
+  "keywords": [
+    "react",
+    "week-picker",
+    "date-picker",
+    "calendar",
+    "week-selector",
+    "date-range",
+    "iso-week",
+    "week-numbers",
+    "react-component",
+    "ui-component",
+    "datepicker",
+    "week-calendar",
+    "vite"
+  ],
+  "author": {
+    "name": "Nijat Aliyev",
+    "url": "https://aliyev.dev"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react": "^4.6.0",
+    "@vitest/coverage-v8": "^3.2.4",
+    "@vitest/ui": "^3.2.4",
+    "eslint": "^9.30.1",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "jsdom": "^26.1.0",
+    "prettier": "^3.6.2",
+    "prop-types": "^15.8.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "typescript": "^5.8.3",
+    "vite": "^7.0.2",
+    "vite-plugin-dts": "^4.5.4",
+    "vitest": "^3.2.4"
+  },
+  "size-limit": [
+    {
+      "path": "dist/react-week-picker-pro.js",
+      "limit": "20 KB"
+    }
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
