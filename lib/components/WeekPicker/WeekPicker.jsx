@@ -1,5 +1,4 @@
-import React, { useState, useMemo } from "react";
-import PropTypes from "prop-types";
+import { useState, useMemo } from "react";
 import {
   getISOWeekNumber,
   getWeekStart,
@@ -8,17 +7,16 @@ import {
   isSameWeek,
   getMonthDays,
 } from "../../utils/dateUtils";
-import styles from "./WeekPicker.module.css";
 
 const WeekPicker = ({
   selectedWeek,
   onWeekSelect,
   minDate,
   maxDate,
-  className,
-  dateFormat,
-  showWeekNumbers,
-  firstDayOfWeek,
+  className = "",
+  dateFormat = "MMM dd, yyyy",
+  showWeekNumbers = true,
+  firstDayOfWeek = 1,
 }) => {
   const [currentDate, setCurrentDate] = useState(selectedWeek || new Date());
   const [selectedWeekStart, setSelectedWeekStart] = useState(
@@ -118,11 +116,11 @@ const WeekPicker = ({
   ];
 
   return (
-    <div className={`${styles.weekPicker} ${className}`}>
+    <div className={`week-picker ${className}`}>
       {/* Header */}
-      <div className={styles.header}>
+      <div className="week-picker__header">
         <button
-          className={styles.navButton}
+          className="week-picker__nav-button"
           onClick={goToPreviousMonth}
           disabled={isPreviousDisabled}
           aria-label="Previous month"
@@ -130,12 +128,12 @@ const WeekPicker = ({
           ‹
         </button>
 
-        <h2 className={styles.monthYear}>
+        <h2 className="week-picker__month-year">
           {monthNames[currentMonth]} {currentYear}
         </h2>
 
         <button
-          className={styles.navButton}
+          className="week-picker__nav-button"
           onClick={goToNextMonth}
           disabled={isNextDisabled}
           aria-label="Next month"
@@ -146,8 +144,8 @@ const WeekPicker = ({
 
       {/* Selected week info */}
       {selectedWeekInfo && (
-        <div className={styles.selectedWeekInfo}>
-          <p className={styles.selectedWeekText}>
+        <div className="week-picker__selected-week-info">
+          <p className="week-picker__selected-week-text">
             Week {selectedWeekInfo.weekNumber}: {selectedWeekInfo.start} -{" "}
             {selectedWeekInfo.end}
           </p>
@@ -155,13 +153,15 @@ const WeekPicker = ({
       )}
 
       {/* Calendar */}
-      <div className={styles.calendar}>
+      <div className="week-picker__calendar">
         {/* Week day headers */}
-        <div className={styles.weekDayHeaders}>
-          {showWeekNumbers && <div className={styles.weekNumberHeader}>Wk</div>}
-          <div className={styles.weekDayHeadersContainer}>
+        <div className="week-picker__week-day-headers">
+          {showWeekNumbers && (
+            <div className="week-picker__week-number-header">Wk</div>
+          )}
+          <div className="week-picker__week-day-headers-container">
             {weekDayHeaders.map((day) => (
-              <div key={day} className={styles.weekDayHeader}>
+              <div key={day} className="week-picker__week-day-header">
                 {day}
               </div>
             ))}
@@ -183,32 +183,45 @@ const WeekPicker = ({
             (maxDate && weekStart > maxDate)
           );
 
+          const weekRowClasses = [
+            "week-picker__week-row",
+            isSelected ? "week-picker__week-row--selected" : "",
+            !isSelectable ? "week-picker__week-row--disabled" : "",
+          ]
+            .filter(Boolean)
+            .join(" ");
+
           return (
             <div
               key={weekIndex}
-              className={`${styles.weekRow} ${isSelected ? styles.selected : ""} ${!isSelectable ? styles.disabled : ""}`}
+              className={weekRowClasses}
               onClick={() => isSelectable && handleWeekSelect(weekStart)}
               style={{
                 cursor: isSelectable ? "pointer" : "not-allowed",
               }}
             >
               {showWeekNumbers && (
-                <div className={styles.weekNumber}>{weekNumber}</div>
+                <div className="week-picker__week-number">{weekNumber}</div>
               )}
 
-              <div className={styles.daysContainer}>
-                {week.map((day, dayIndex) => (
-                  <div
-                    key={dayIndex}
-                    className={`${styles.day} ${
-                      day.isCurrentMonth
-                        ? styles.currentMonth
-                        : styles.otherMonth
-                    } ${day.isToday ? styles.today : ""}`}
-                  >
-                    {day.date.getDate()}
-                  </div>
-                ))}
+              <div className="week-picker__days-container">
+                {week.map((day, dayIndex) => {
+                  const dayClasses = [
+                    "week-picker__day",
+                    day.isCurrentMonth
+                      ? "week-picker__day--current-month"
+                      : "week-picker__day--other-month",
+                    day.isToday ? "week-picker__day--today" : "",
+                  ]
+                    .filter(Boolean)
+                    .join(" ");
+
+                  return (
+                    <div key={dayIndex} className={dayClasses}>
+                      {day.date.getDate()}
+                    </div>
+                  );
+                })}
               </div>
             </div>
           );
@@ -216,36 +229,6 @@ const WeekPicker = ({
       </div>
     </div>
   );
-};
-
-WeekPicker.propTypes = {
-  /** Currently selected week */
-  selectedWeek: PropTypes.instanceOf(Date),
-  /** Callback function when a week is selected */
-  onWeekSelect: PropTypes.func,
-  /** Minimum selectable date */
-  minDate: PropTypes.instanceOf(Date),
-  /** Maximum selectable date */
-  maxDate: PropTypes.instanceOf(Date),
-  /** Additional CSS class name */
-  className: PropTypes.string,
-  /** Date format string for display */
-  dateFormat: PropTypes.string,
-  /** Whether to show week numbers */
-  showWeekNumbers: PropTypes.bool,
-  /** First day of week: 0 = Sunday, 1 = Monday */
-  firstDayOfWeek: PropTypes.oneOf([0, 1]),
-};
-
-WeekPicker.defaultProps = {
-  selectedWeek: undefined,
-  onWeekSelect: undefined,
-  minDate: undefined,
-  maxDate: undefined,
-  className: "",
-  dateFormat: "MMM dd, yyyy",
-  showWeekNumbers: true,
-  firstDayOfWeek: 1,
 };
 
 export default WeekPicker;

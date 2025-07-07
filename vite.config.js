@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { resolve } from "path";
 import dts from "vite-plugin-dts";
+import { copyFileSync } from "fs";
 
 export default defineConfig(({ mode }) => {
   if (mode === "demo") {
@@ -25,6 +26,21 @@ export default defineConfig(({ mode }) => {
         include: ["lib/**/*"],
         exclude: ["src/**/*", "**/*.test.*"],
       }),
+      // Custom plugin to copy CSS file
+      {
+        name: "copy-css",
+        writeBundle() {
+          try {
+            copyFileSync(
+              resolve(__dirname, "lib/styles/week-picker.css"),
+              resolve(__dirname, "dist/style.css")
+            );
+            console.log("✅ CSS file copied to dist/style.css");
+          } catch (error) {
+            console.error("❌ Failed to copy CSS:", error);
+          }
+        },
+      },
     ],
     build: {
       lib: {
@@ -36,22 +52,28 @@ export default defineConfig(({ mode }) => {
       },
       rollupOptions: {
         external: ["react", "react-dom", "prop-types"],
-        output: {
-          exports: "named",
-          globals: {
-            react: "React",
-            "react-dom": "ReactDOM",
-            "prop-types": "PropTypes",
+        output: [
+          {
+            format: "es",
+            exports: "auto",
+            globals: {
+              react: "React",
+              "react-dom": "ReactDOM",
+              "prop-types": "PropTypes",
+            },
           },
-        },
+          {
+            format: "cjs",
+            exports: "auto",
+            globals: {
+              react: "React",
+              "react-dom": "ReactDOM",
+              "prop-types": "PropTypes",
+            },
+          },
+        ],
       },
       sourcemap: true,
-      cssCodeSplit: false,
-    },
-    css: {
-      modules: {
-        generateScopedName: "[name]__[local]___[hash:base64:5]",
-      },
     },
   };
 });

@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import WeekPicker from "../lib/components/WeekPicker/WeekPicker";
+import '../lib/styles/week-picker.css'
 import "./App.css";
 
 function App() {

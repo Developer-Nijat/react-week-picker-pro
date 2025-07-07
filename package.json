@@ -1,6 +1,6 @@
 {
   "name": "react-week-picker-pro",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "type": "module",
   "description": "A modern, functional React component for selecting weeks with comprehensive features including week numbers, date ranges, and flexible configuration options.",
   "main": "./dist/react-week-picker-pro.cjs",
@@ -10,8 +10,10 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/react-week-picker-pro.js",
-      "require": "./dist/react-week-picker-pro.cjs"
+      "require": "./dist/react-week-picker-pro.cjs",
+      "default": "./dist/react-week-picker-pro.js"
     },
+    "./style.css": "./dist/style.css",
     "./dist/style.css": "./dist/style.css"
   },
   "files": [

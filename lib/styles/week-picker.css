@@ -1,7 +1,6 @@
 /* WeekPicker Component Styles */
-.weekPicker {
-  font-family:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+.week-picker {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background: white;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
@@ -11,7 +10,7 @@
 }
 
 /* Header */
-.header {
+.week-picker__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -20,14 +19,14 @@
   border-bottom: 1px solid #e5e7eb;
 }
 
-.monthYear {
+.week-picker__month-year {
   margin: 0;
   font-size: 1.1rem;
   font-weight: 600;
   color: #1f2937;
 }
 
-.navButton {
+.week-picker__nav-button {
   background: none;
   border: 1px solid #d1d5db;
   border-radius: 6px;
@@ -42,25 +41,25 @@
   transition: all 0.2s ease;
 }
 
-.navButton:hover:not(:disabled) {
+.week-picker__nav-button:hover:not(:disabled) {
   background: #f3f4f6;
   border-color: #9ca3af;
   color: #374151;
 }
 
-.navButton:disabled {
+.week-picker__nav-button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
 /* Selected Week Info */
-.selectedWeekInfo {
+.week-picker__selected-week-info {
   padding: 12px 20px;
   background: #eff6ff;
   border-bottom: 1px solid #e5e7eb;
 }
 
-.selectedWeekText {
+.week-picker__selected-week-text {
   margin: 0;
   font-size: 0.9rem;
   color: #1e40af;
@@ -68,19 +67,19 @@
 }
 
 /* Calendar */
-.calendar {
+.week-picker__calendar {
   padding: 16px 20px 20px;
 }
 
 /* Week Day Headers */
-.weekDayHeaders {
+.week-picker__week-day-headers {
   display: flex;
   margin-bottom: 8px;
   border-bottom: 1px solid #f3f4f6;
   padding-bottom: 8px;
 }
 
-.weekNumberHeader {
+.week-picker__week-number-header {
   width: 40px;
   text-align: center;
   font-size: 0.8rem;
@@ -89,12 +88,12 @@
   padding: 4px 0;
 }
 
-.weekDayHeadersContainer {
+.week-picker__week-day-headers-container {
   display: flex;
   flex: 1;
 }
 
-.weekDayHeader {
+.week-picker__week-day-header {
   flex: 1;
   text-align: center;
   font-size: 0.8rem;
@@ -104,30 +103,31 @@
 }
 
 /* Week Rows */
-.weekRow {
+.week-picker__week-row {
   display: flex;
   align-items: center;
   border-radius: 6px;
   margin-bottom: 2px;
   transition: all 0.2s ease;
   cursor: pointer;
+  padding: 2px;
 }
 
-.weekRow:hover:not(.disabled) {
+.week-picker__week-row:hover:not(.week-picker__week-row--disabled) {
   background: #f9fafb;
 }
 
-.weekRow.selected {
-  background: #dbeafe;
+.week-picker__week-row--selected {
+  background: #dbeafe !important;
   border: 1px solid #93c5fd;
 }
 
-.weekRow.disabled {
+.week-picker__week-row--disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-.weekNumber {
+.week-picker__week-number {
   width: 40px;
   text-align: center;
   font-size: 0.8rem;
@@ -136,12 +136,12 @@
   padding: 8px 0;
 }
 
-.daysContainer {
+.week-picker__days-container {
   display: flex;
   flex: 1;
 }
 
-.day {
+.week-picker__day {
   flex: 1;
   text-align: center;
   padding: 8px 4px;
@@ -149,78 +149,78 @@
   transition: all 0.2s ease;
 }
 
-.day.currentMonth {
+.week-picker__day--current-month {
   color: #1f2937;
   font-weight: 500;
 }
 
-.day.otherMonth {
+.week-picker__day--other-month {
   color: #9ca3af;
   font-weight: 400;
 }
 
-.day.today {
+.week-picker__day--today {
   background: #fef3c7;
   color: #92400e;
   border-radius: 4px;
   font-weight: 600;
 }
 
-.weekRow.selected .day.today {
+.week-picker__week-row--selected .week-picker__day--today {
   background: #fbbf24;
   color: #78350f;
 }
 
 /* Responsive Design */
 @media (max-width: 480px) {
-  .weekPicker {
+  .week-picker {
     max-width: 100%;
     border-radius: 0;
     border-left: none;
     border-right: none;
   }
-
-  .header {
+  
+  .week-picker__header {
     padding: 12px 16px;
   }
-
-  .calendar {
+  
+  .week-picker__calendar {
     padding: 12px 16px 16px;
   }
-
-  .day {
+  
+  .week-picker__day {
     padding: 6px 2px;
     font-size: 0.8rem;
   }
-
-  .weekNumber {
+  
+  .week-picker__week-number {
     width: 32px;
     font-size: 0.7rem;
   }
-
-  .weekNumberHeader {
+  
+  .week-picker__week-number-header {
     width: 32px;
     font-size: 0.7rem;
   }
 }
 
 /* Focus styles for accessibility */
-.weekRow:focus {
+.week-picker__week-row:focus {
   outline: 2px solid #3b82f6;
   outline-offset: -2px;
 }
 
-.navButton:focus {
+.week-picker__nav-button:focus {
   outline: 2px solid #3b82f6;
   outline-offset: -2px;
 }
 
 /* Animation for week selection */
-.weekRow.selected {
-  animation: weekSelect 0.3s ease-out;
+.week-picker__week-row--selected {
+  animation: week-select 0.3s ease-out;
 }
 
-@keyframes weekSelect {
+@keyframes week-select {
   0% {
     transform: scale(1);
     background: #f9fafb;
@@ -234,62 +234,16 @@
   }
 }
 
-/* Dark mode support (optional) */
-@media (prefers-color-scheme: dark) {
-  .weekPicker {
-    background: #1f2937;
-    border-color: #374151;
-    color: #f9fafb;
-  }
+/* Additional visual improvements */
+.week-picker__week-row {
+  border: 1px solid transparent;
+}
 
-  .header {
-    background: #111827;
-    border-color: #374151;
-  }
+.week-picker__week-row:hover:not(.week-picker__week-row--disabled) {
+  border-color: #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
 
-  .monthYear {
-    color: #f9fafb;
-  }
-
-  .navButton {
-    border-color: #4b5563;
-    color: #9ca3af;
-  }
-
-  .navButton:hover:not(:disabled) {
-    background: #374151;
-    border-color: #6b7280;
-    color: #d1d5db;
-  }
-
-  .selectedWeekInfo {
-    background: #1e3a8a;
-    border-color: #374151;
-  }
-
-  .selectedWeekText {
-    color: #93c5fd;
-  }
-
-  .weekRow:hover:not(.disabled) {
-    background: #374151;
-  }
-
-  .weekRow.selected {
-    background: #1e40af;
-    border-color: #3b82f6;
-  }
-
-  .day.currentMonth {
-    color: #f9fafb;
-  }
-
-  .day.otherMonth {
-    color: #6b7280;
-  }
-
-  .day.today {
-    background: #f59e0b;
-    color: #1f2937;
-  }
+.week-picker__week-row--selected {
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.15);
 }
