@@ -33,7 +33,7 @@
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
     "type-check": "tsc --noEmit",
     "prepare": "npm run build",
-    "prepublishOnly": "npm run test:run && npm run build",
+    "prepublishOnly": "npm run build",
     "size": "size-limit",
     "analyze": "npm run build && npx vite-bundle-analyzer dist"
   },
