@@ -206,7 +206,7 @@ function App() {
         <p>
           Made with ❤️ by{" "}
           <a
-            href="https://github.com/nicatasa"
+            href="https://github.com/Developer-Nijat"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -215,7 +215,7 @@ function App() {
         </p>
         <p>
           <a
-            href="https://github.com/nicatasa/react-week-picker-pro"
+            href="https://github.com/Developer-Nijat/react-week-picker-pro"
             target="_blank"
             rel="noopener noreferrer"
           >

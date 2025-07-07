@@ -227,7 +227,7 @@ npm run test:coverage
 
 ```bash
 # Clone repository
-git clone https://github.com/nicatasa/react-week-picker-pro.git
+git clone https://github.com/Developer-Nijat/react-week-picker-pro.git
 
 # Install dependencies
 npm install
@@ -260,16 +260,16 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- Built with ❤️ by [nicatasa](https://github.com/nicatasa)
+- Built with ❤️ by [@developer.nijat](https://github.com/Developer-Nijat)
 - Inspired by the need for a simple, functional week picker
 - Thanks to all contributors and users
 
 ## 🔗 Links
 
-- [GitHub Repository](https://github.com/nicatasa/react-week-picker-pro)
+- [GitHub Repository](https://github.com/Developer-Nijat/react-week-picker-pro)
 - [npm Package](https://www.npmjs.com/package/react-week-picker-pro)
-- [Issue Tracker](https://github.com/nicatasa/react-week-picker-pro/issues)
-- [Discussions](https://github.com/nicatasa/react-week-picker-pro/discussions)
+- [Issue Tracker](https://github.com/Developer-Nijat/react-week-picker-pro/issues)
+- [Discussions](https://github.com/Developer-Nijat/react-week-picker-pro/discussions)
 
 ---
 
